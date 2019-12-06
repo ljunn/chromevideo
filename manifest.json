@@ -1,0 +1,52 @@
+{
+	"manifest_version_comment":"清单文件的版本，这个必须写，而且必须是2",
+    "manifest_version": 2,
+	"name": "chrome视频插件",
+	"version": "1.0.0",
+	"description": "__MSG_pluginDesc__",
+	"icons":
+	{
+		"16": "img/icon.png",
+		"48": "img/icon.png",
+		"128": "img/icon.png"
+	},
+	"background":
+	{
+		"page": "background.html"
+	},
+	"browser_action": 
+	{
+		"default_icon": "img/sds.png",
+		"default_title": "磁力链接播放插件",
+		"default_popup": "popup.html"
+	},
+	"content_scripts": 
+	[
+		{
+			"matches": ["<all_urls>"],
+			"js": ["js/jquery-1.8.3.js","js/magnet.js"],
+			"run_at": "document_start"
+		}
+	],
+	"permissions":
+	[
+		"contextMenus", 
+		"tabs",
+		"notifications", 
+		"webRequest", 
+		"webRequestBlocking", 
+		"storage", 
+		"http://*/*", 
+		"https://*/*"
+	],
+	"web_accessible_resources": ["js/inject.js"],
+	"homepage_url": "https://blog.konngo.cn",
+	"options_page": "options.html",
+	"options_ui":
+	{
+		"page": "options.html",
+		"chrome_style": true
+	},
+	"omnibox": { "keyword" : "video" },
+	"default_locale": "zh_CN"
+}
